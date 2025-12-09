@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Star } from "lucide-react"
+import { Star, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -51,17 +51,17 @@ export function GitHubStarsButton({
   }
 
   return (
-    <Button
-      variant={variant}
-      size={size}
-      className={cn("gap-2", className)}
-      asChild
+    <a
+      href={`https://github.com/${username}/${repo}`}
+      target="_blank"
+      rel="noopener noreferrer"
     >
-      <a
-        href={`https://github.com/${username}/${repo}`}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Button
+        variant={variant}
+        size={size}
+        className={cn("gap-2", className)}
       >
+        <Github className="h-4 w-4" />
         <Star className="h-4 w-4" />
         {loading ? (
           <span>Star</span>
@@ -70,7 +70,7 @@ export function GitHubStarsButton({
         ) : (
           <span>Star</span>
         )}
-      </a>
-    </Button>
+      </Button>
+    </a>
   )
 }
