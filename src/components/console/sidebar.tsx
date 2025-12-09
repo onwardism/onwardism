@@ -1,0 +1,54 @@
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Home, Newspaper, FileText, Settings, LogOut, Calendar, BookOpen } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+const navigation = [
+  { name: "Dashboard", href: "/console/dashboard", icon: Home },
+  { name: "News", href: "/console/news", icon: Newspaper },
+  { name: "Blog", href: "/console/blog", icon: FileText },
+  { name: "Events", href: "/console/events", icon: Calendar },
+  { name: "Research", href: "/console/research", icon: BookOpen },
+  { name: "Settings", href: "/console/settings", icon: Settings },
+]
+
+export function Sidebar() {
+  const pathname = usePathname()
+
+  return (
+    <div className="flex h-full w-64 flex-col border-r bg-card">
+      <div className="flex h-16 items-center border-b px-6">
+        <Link href="/console/dashboard" className="flex items-center gap-2">
+          <Newspaper className="h-6 w-6" />
+          <span className="text-xl font-bold">Onwardism</span>
+        </Link>
+      </div>
+      <nav className="flex-1 space-y-1 p-4">
+        {navigation.map((item) => {
+          const isActive = pathname === item.href
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={cn(
+                "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                isActive
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+              )}
+            >
+              <item.icon className="h-5 w-5" />
+              {item.name}
+            </Link>
+          )
+        })}
+      </nav>
+      <div className="border-t p-4">
+        <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+          <LogOut className="h-5 w-5" />
+          Sign Out
+        </button>
+      </div>
+    </div>
+  )
+}
