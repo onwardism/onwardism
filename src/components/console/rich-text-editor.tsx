@@ -17,7 +17,16 @@ export function RichTextEditor({
 }) {
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        paragraph: {
+          HTMLAttributes: {
+            class: 'mb-4',
+          },
+        },
+        hardBreak: {
+          keepMarks: true,
+        },
+      }),
       Underline,
       Link.configure({
         openOnClick: false,
@@ -28,6 +37,59 @@ export function RichTextEditor({
       }),
     ],
     content: value,
+    immediatelyRender: false,
+    editorProps: {
+      attributes: {
+        class: 'prose prose-sm dark:prose-invert max-w-none focus:outline-none',
+      },
+      transformPastedText(text) {
+        // Auto-format markdown-style syntax
+        let formatted = text
+        
+        // Convert markdown headings to HTML
+        formatted = formatted.replace(/^### (.+)$/gm, '<h3>$1</h3>')
+        formatted = formatted.replace(/^## (.+)$/gm, '<h2>$1</h2>')
+        formatted = formatted.replace(/^# (.+)$/gm, '<h2>$1</h2>')
+        
+        // Convert markdown lists to HTML
+        // Bullet lists (-, *, +)
+        formatted = formatted.replace(/^[\-\*\+] (.+)$/gm, '<ul><li>$1</li></ul>')
+        // Numbered lists
+        formatted = formatted.replace(/^\d+\. (.+)$/gm, '<ol><li>$1</li></ol>')
+        
+        // Merge consecutive list items
+        formatted = formatted.replace(/<\/ul>\n<ul>/g, '')
+        formatted = formatted.replace(/<\/ol>\n<ol>/g, '')
+        
+        // Convert markdown bold/italic
+        formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        formatted = formatted.replace(/\*(.+?)\*/g, '<em>$1</em>')
+        formatted = formatted.replace(/__(.+?)__/g, '<strong>$1</strong>')
+        formatted = formatted.replace(/_(.+?)_/g, '<em>$1</em>')
+        
+        // Convert markdown links [text](url)
+        formatted = formatted.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>')
+        
+        // Convert markdown code
+        formatted = formatted.replace(/`(.+?)`/g, '<code>$1</code>')
+        
+        // Convert blockquotes
+        formatted = formatted.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+        
+        // Convert double line breaks to paragraphs
+        formatted = formatted.replace(/\n\n/g, '</p><p>')
+        // Convert single line breaks to <br>
+        formatted = formatted.replace(/\n/g, '<br>')
+        
+        return formatted
+      },
+      transformPastedHTML(html) {
+        // Preserve line breaks in HTML
+        return html
+          .replace(/\n\n/g, '</p><p>')
+          .replace(/\n/g, '<br>')
+      },
+    },
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML())
     },
@@ -213,7 +275,7 @@ export function RichTextEditor({
       {/* Editor Content */}
       <EditorContent 
         editor={editor} 
-        className="prose prose-sm dark:prose-invert max-w-none p-4 min-h-[400px] focus:outline-none"
+        className="p-4 min-h-[400px]"
       />
     </div>
   )

@@ -82,17 +82,18 @@ npm install --legacy-peer-deps
 
    a. Create a new project at [supabase.com](https://supabase.com)
    
-   b. Run the SQL migrations in order from the `supabase/` folder:
-   ```
-   01-profiles.sql       # User profiles & preferences
-   02-categories.sql     # Content categories
-   03-tags.sql          # Tagging system
-   04-articles.sql      # Articles & article_tags
-   05-comments.sql      # Comments system
-   06-bookmarks.sql     # User bookmarks
-   07-functions.sql     # DB functions & triggers
-   08-storage.sql       # Storage buckets & policies
-   ```
+   b. Run the complete database setup:
+      - Go to your Supabase project dashboard
+      - Navigate to SQL Editor
+      - Copy and paste the entire contents of `supabase/setup-schema.sql`
+      - Click "Run" to execute all migrations at once
+      
+      This will create:
+      - All database tables (profiles, categories, tags, articles, comments, bookmarks)
+      - Row Level Security (RLS) policies
+      - Database functions and triggers
+      - Storage buckets (avatars, article-images, uploads)
+      - Storage policies
    
    c. Copy `.env.example` to `.env.local` and add your Supabase credentials:
    ```bash
@@ -103,6 +104,13 @@ npm install --legacy-peer-deps
    ```env
    NEXT_PUBLIC_SUPABASE_URL=your-project-url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   ```
+   
+   e. (Optional) Upgrade a user to admin role:
+   ```sql
+   UPDATE profiles 
+   SET role = 'admin' 
+   WHERE email = 'your-email@example.com';
    ```
 
 4. **Run the development server**
@@ -143,14 +151,7 @@ onwardism/
 │       │   └── actions.ts     # Server actions (mutations)
 │       └── utils.ts           # Utility functions
 ├── supabase/
-│   ├── 01-profiles.sql        # User profiles schema
-│   ├── 02-categories.sql      # Categories schema
-│   ├── 03-tags.sql           # Tags schema
-│   ├── 04-articles.sql       # Articles schema
-│   ├── 05-comments.sql       # Comments schema
-│   ├── 06-bookmarks.sql      # Bookmarks schema
-│   ├── 07-functions.sql      # Database functions
-│   └── 08-storage.sql        # Storage buckets
+│   └── setup-schema.sql       # Complete database setup (all tables, RLS, functions, storage)
 ├── public/
 │   └── icons/                 # App icons
 ├── .env.example               # Environment variables template
