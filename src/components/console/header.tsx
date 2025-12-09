@@ -1,9 +1,21 @@
-import { Bell, Search, User } from "lucide-react"
+'use client'
+
+import { Bell, Search, User, LogOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ThemeToggle } from "@/components/shared/theme-toggle"
+import { signOut } from "@/lib/supabase/actions"
+import { useRouter } from "next/navigation"
 
 export function Header() {
+  const router = useRouter()
+
+  async function handleSignOut() {
+    await signOut()
+    router.push('/auth/login')
+    router.refresh()
+  }
+
   return (
     <header className="flex h-16 items-center justify-between border-b bg-card px-6">
       <div className="flex flex-1 items-center gap-4">
@@ -23,6 +35,9 @@ export function Header() {
         </Button>
         <Button variant="ghost" size="icon">
           <User className="h-5 w-5" />
+        </Button>
+        <Button variant="ghost" size="icon" onClick={handleSignOut} title="Sign Out">
+          <LogOut className="h-5 w-5" />
         </Button>
       </div>
     </header>

@@ -1,9 +1,48 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { AppHeader } from "@/components/app/header"
 import { AppFooter } from "@/components/app/footer"
-import { ContentFilter } from "@/components/shared/content-filter"
+import { ContentFilterBar } from "@/components/shared/content-filter-bar"
+import { ContentGrid } from "@/components/shared/content-grid"
+import { createClient } from "@/lib/supabase/server"
 
-export default function BlogPage() {
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: { category?: string; sort?: string }
+}) {
+  const supabase = await createClient()
+  
+  // Build query
+  let query = supabase
+    .from('articles')
+    .select(`
+      *,
+      author:profiles(full_name, avatar_url),
+      category:categories(name, slug)
+    `)
+    .eq('content_type', 'blog')
+    .eq('status', 'published')
+
+  // Filter by category if provided
+  if (searchParams.category && searchParams.category !== 'all') {
+    query = query.eq('category.slug', searchParams.category)
+  }
+
+  // Sort
+  const sortBy = searchParams.sort || 'latest'
+  if (sortBy === 'views') {
+    query = query.order('views', { ascending: false })
+  } else {
+    query = query.order('custom_date', { ascending: false })
+  }
+
+  const { data: articles } = await query
+
+  // Get categories for filter
+  const { data: categories } = await supabase
+    .from('categories')
+    .select('*')
+    .order('name')
+
   return (
     <div className="min-h-screen flex flex-col">
       <AppHeader />
@@ -16,20 +55,19 @@ export default function BlogPage() {
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto space-y-8">
-          <ContentFilter />
-          <Card>
-            <CardHeader>
-              <CardTitle>Latest Blog Posts</CardTitle>
-              <CardDescription>Stay updated with our latest articles</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-col items-center justify-center py-12 space-y-4">
-                <p className="text-muted-foreground">No blog posts available yet</p>
-                <p className="text-sm text-muted-foreground">Check back soon for new content</p>
-              </div>
-            </CardContent>
-          </Card>
+        <section className="max-w-6xl mx-auto space-y-8">
+          <ContentFilterBar
+            categories={categories || []}
+            currentCategory={searchParams.category || 'all'}
+            currentSort={searchParams.sort || 'latest'}
+            basePath="/site/blog"
+          />
+
+          <ContentGrid
+            articles={articles || []}
+            basePath="/site/blog"
+            emptyMessage="No blog posts found"
+          />
         </section>
       </main>
 

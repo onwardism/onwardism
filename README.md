@@ -16,6 +16,7 @@ Onwardism is a modern, open-source news platform built for the tech community. W
 - **UI Library**: React 18
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
+- **Backend**: Supabase (Auth, Database, Storage)
 - **Font**: Ubuntu
 - **Icons**: Lucide React
 - **Components**: shadcn/ui
@@ -62,6 +63,7 @@ Onwardism is a modern, open-source news platform built for the tech community. W
 
 - Node.js 18 or higher
 - npm, yarn, or pnpm
+- Supabase account ([sign up free](https://supabase.com))
 
 ## 🛠️ Getting Started
 
@@ -76,12 +78,39 @@ cd onwardism
 npm install --legacy-peer-deps
 ```
 
-3. **Run the development server**
+3. **Set up Supabase**
+
+   a. Create a new project at [supabase.com](https://supabase.com)
+   
+   b. Run the SQL migrations in order from the `supabase/` folder:
+   ```
+   01-profiles.sql       # User profiles & preferences
+   02-categories.sql     # Content categories
+   03-tags.sql          # Tagging system
+   04-articles.sql      # Articles & article_tags
+   05-comments.sql      # Comments system
+   06-bookmarks.sql     # User bookmarks
+   07-functions.sql     # DB functions & triggers
+   08-storage.sql       # Storage buckets & policies
+   ```
+   
+   c. Copy `.env.example` to `.env.local` and add your Supabase credentials:
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   d. Update `.env.local` with your project details:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your-project-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   ```
+
+4. **Run the development server**
 ```bash
 npm run dev
 ```
 
-4. **Open your browser**
+5. **Open your browser**
 Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📁 Project Structure
@@ -101,13 +130,31 @@ onwardism/
 │   ├── components/
 │   │   ├── app/               # App-wide components (Header, Footer)
 │   │   ├── console/           # Console components (Sidebar, Header)
-│   │   ├── providers/         # Context providers
+│   │   ├── providers/         # Context providers (Theme, Supabase)
 │   │   ├── shared/            # Shared components
 │   │   └── ui/                # shadcn/ui components
 │   └── lib/
+│       ├── supabase/          # Supabase client & utilities
+│       │   ├── client.ts      # Browser client
+│       │   ├── server.ts      # Server client
+│       │   ├── middleware.ts  # Auth middleware
+│       │   ├── types.ts       # Database types
+│       │   ├── queries.ts     # Data fetching functions
+│       │   └── actions.ts     # Server actions (mutations)
 │       └── utils.ts           # Utility functions
+├── supabase/
+│   ├── 01-profiles.sql        # User profiles schema
+│   ├── 02-categories.sql      # Categories schema
+│   ├── 03-tags.sql           # Tags schema
+│   ├── 04-articles.sql       # Articles schema
+│   ├── 05-comments.sql       # Comments schema
+│   ├── 06-bookmarks.sql      # Bookmarks schema
+│   ├── 07-functions.sql      # Database functions
+│   └── 08-storage.sql        # Storage buckets
 ├── public/
 │   └── icons/                 # App icons
+├── .env.example               # Environment variables template
+├── middleware.ts              # Next.js middleware (auth)
 ├── CONTRIBUTING.md            # Contribution guidelines
 ├── CODE_OF_CONDUCT.md         # Code of conduct
 ├── SECURITY.md                # Security policy
@@ -125,12 +172,14 @@ onwardism/
 - [x] Public site pages
 - [x] Dark mode support
 
-### Phase 2: Backend Integration 🚧
-- [ ] API setup
-- [ ] Database integration
-- [ ] User authentication
-- [ ] Content management API
-- [ ] File upload system
+### Phase 2: Backend Integration ✅
+- [x] Supabase setup
+- [x] Database schema
+- [x] User authentication
+- [x] Row Level Security (RLS)
+- [x] Storage buckets
+- [x] TypeScript types
+- [x] Server actions & queries
 
 ### Phase 3: Core Features 📋
 - [ ] Article CRUD operations

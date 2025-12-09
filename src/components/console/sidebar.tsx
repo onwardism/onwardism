@@ -5,10 +5,7 @@ import { cn } from "@/lib/utils"
 
 const navigation = [
   { name: "Dashboard", href: "/console/dashboard", icon: Home },
-  { name: "News", href: "/console/news", icon: Newspaper },
-  { name: "Blog", href: "/console/blog", icon: FileText },
-  { name: "Events", href: "/console/events", icon: Calendar },
-  { name: "Research", href: "/console/research", icon: BookOpen },
+  { name: "Content", href: "/console/content", icon: FileText },
   { name: "Settings", href: "/console/settings", icon: Settings },
 ]
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Ubuntu } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/providers/theme-provider"
+import { SupabaseProvider } from "@/components/providers/supabase-provider"
 
 const ubuntu = Ubuntu({ 
   weight: ["300", "400", "500", "700"],
@@ -27,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={ubuntu.className}>
-        <ThemeProvider>
-          {children}
-          <CookieConsent />
-        </ThemeProvider>
+        <SupabaseProvider>
+          <ThemeProvider>
+            {children}
+            <CookieConsent />
+          </ThemeProvider>
+        </SupabaseProvider>
       </body>
     </html>
   )
