@@ -8,6 +8,33 @@ export function AppFooter() {
   return (
     <footer className="border-t bg-background">
       <div className="container py-6 sm:py-8 md:py-12 px-4 sm:px-6">
+        {/* Newsletter Signup - Moved to top */}
+        <div className="mb-8 sm:mb-12 pt-0 pb-8 sm:pb-12 border-b">
+          <div className="max-w-md mx-auto text-center">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <Mail className="h-4 w-4 sm:h-5 w-5 text-primary" />
+              <h4 className="text-base sm:text-lg font-semibold">Stay Updated</h4>
+            </div>
+            <p className="text-xs sm:text-sm text-muted-foreground mb-4">
+              Get the latest tech insights and platform updates delivered to your inbox.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 text-sm"
+              />
+              <Button type="submit" className="w-full sm:w-auto px-4 py-2 text-sm">
+                Subscribe
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              No spam. Unsubscribe anytime.
+            </p>
+          </div>
+        </div>
+
+        {/* Main Footer Content */}
         <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3 md:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-2">
@@ -83,32 +110,7 @@ export function AppFooter() {
           </div>
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t">
-          <div className="max-w-md mx-auto text-center">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <Mail className="h-4 w-4 sm:h-5 w-5 text-primary" />
-              <h4 className="text-base sm:text-lg font-semibold">Stay Updated</h4>
-            </div>
-            <p className="text-xs sm:text-sm text-muted-foreground mb-4">
-              Get the latest tech insights and platform updates delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 text-sm"
-              />
-              <Button type="submit" className="w-full sm:w-auto px-4 py-2 text-sm">
-                Subscribe
-              </Button>
-            </div>
-            <p className="text-xs text-muted-foreground mt-2">
-              No spam. Unsubscribe anytime.
-            </p>
-          </div>
-        </div>
-        
+        {/* Bottom Section */}
         <div className="mt-6 sm:mt-8 flex flex-col items-center justify-between gap-4 border-t pt-6 sm:pt-8 md:flex-row">
           <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
             © 2026 Onwardism. All rights reserved.
