@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Send, Bot, User, Paperclip, X, FileText, Image as ImageIcon } from 'lucide-react'
+import TextType from '@/components/text-type'
 
 interface AttachedFile {
   id: string
@@ -167,6 +168,26 @@ export default function HomePage() {
   return (
     <main className="container mx-auto p-4 sm:p-6 md:p-8 min-h-[calc(100vh-200px)] flex flex-col">
       <div className="flex-1 flex flex-col max-w-4xl mx-auto w-full">
+        {/* Welcome Message with Typing Animation */}
+        {messages.length === 0 && (
+          <div className="flex-1 flex flex-col items-center justify-center text-center mb-8">
+            <div className="text-lg sm:text-xl text-muted-foreground min-h-[2rem]">
+              <TextType
+                text={[
+                  "Signal over noise.",
+                  "Engineering first.",
+                  "Built to last."
+                ]}
+                typingSpeed={50}
+                pauseDuration={2000}
+                showCursor={true}
+                cursorCharacter="|"
+                className="text-primary"
+              />
+            </div>
+          </div>
+        )}
+
         {/* Chat History */}
         {messages.length > 0 && (
           <div 
@@ -262,8 +283,8 @@ export default function HomePage() {
         )}
 
         {/* Input Area */}
-        <div className={`${messages.length === 0 ? 'flex-1 flex items-center justify-center' : ''}`}>
-          <div className="w-full max-w-2xl mx-auto">
+        <div className={`${messages.length === 0 ? 'mt-8' : ''}`}>
+          <div className="w-full max-w-4xl mx-auto">
             {/* Attached Files Preview */}
             {attachedFiles.length > 0 && (
               <div className="mb-3 p-3 border rounded-lg bg-muted/50">
@@ -276,7 +297,7 @@ export default function HomePage() {
                     <div key={file.id} className="flex items-center gap-2 p-2 bg-background rounded border">
                       {file.type === 'image' ? (
                         <>
-                          <ImageIcon className="h-4 w-4 text-blue-500 flex-shrink-0" />
+                          <ImageIcon className="h-4 w-4 text-primary flex-shrink-0" />
                           {file.preview && (
                             <img 
                               src={file.preview} 
