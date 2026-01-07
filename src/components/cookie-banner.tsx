@@ -40,10 +40,10 @@ export function CookieBanner() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t shadow-lg">
-      <div className="container mx-auto p-4">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="container mx-auto p-3 sm:p-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
           <div className="flex-1">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               We use cookies to enhance your experience.{' '}
               <Link 
                 href="/legal/cookies" 
@@ -54,19 +54,19 @@ export function CookieBanner() {
             </p>
           </div>
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <Button
               variant="outline"
               size="sm"
               onClick={handleDecline}
-              className="text-sm"
+              className="flex-1 sm:flex-none text-xs sm:text-sm h-8 sm:h-9"
             >
               Decline
             </Button>
             <Button
               size="sm"
               onClick={handleAccept}
-              className="text-sm"
+              className="flex-1 sm:flex-none text-xs sm:text-sm h-8 sm:h-9"
             >
               Accept All
             </Button>
@@ -74,9 +74,9 @@ export function CookieBanner() {
               variant="ghost"
               size="sm"
               onClick={handleClose}
-              className="h-8 w-8 p-0"
+              className="h-8 w-8 p-0 sm:h-9 w-9"
             >
-              <X className="h-4 w-4" />
+              <X className="h-3 w-3 sm:h-4 w-4" />
               <span className="sr-only">Close</span>
             </Button>
           </div>

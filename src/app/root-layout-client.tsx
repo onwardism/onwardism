@@ -13,6 +13,7 @@ export function RootLayoutClient({
   const pathname = usePathname()
   const isConsolePage = pathname?.startsWith('/console')
   const isLegalPage = pathname?.startsWith('/legal')
+  const isAuthPage = pathname?.startsWith('/auth')
 
   if (isConsolePage) {
     return (
@@ -24,6 +25,15 @@ export function RootLayoutClient({
   }
 
   if (isLegalPage) {
+    return (
+      <>
+        {children}
+        <CookieBanner />
+      </>
+    )
+  }
+
+  if (isAuthPage) {
     return (
       <>
         {children}
