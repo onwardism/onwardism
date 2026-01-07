@@ -102,8 +102,8 @@ Before contributing, ensure you have:
 ```bash
 # Fork the repository on GitHub
 # Clone your fork locally
-git clone https://github.com/YOUR_USERNAME/onwardism-web.git
-cd onwardism-web
+git clone https://github.com/YOUR_USERNAME/onwardism.git
+cd onwardism
 ```
 
 ### 2. Install Dependencies
@@ -164,7 +164,9 @@ npm run dev
 
 **Branch Creation:**
 ```bash
-# Create a feature branch
+# Create a feature branch from main
+git checkout main
+git pull origin main
 git checkout -b feature/your-feature-name
 
 # Or for bug fixes

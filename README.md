@@ -1,6 +1,14 @@
 # Onwardism
 
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![CI](https://github.com/onwardism/onwardism/workflows/CI/badge.svg)](https://github.com/onwardism/onwardism/actions)
+[![CodeQL](https://github.com/onwardism/onwardism/workflows/CodeQL/badge.svg)](https://github.com/onwardism/onwardism/actions)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](CONTRIBUTING.md)
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
+
 A unified media platform built for engineers and technology teams to read and publish high-quality news and blogs focused on cloud, data, security, and AI. The platform features an intelligent chat interface for tech discussions and is designed to separate public knowledge consumption from structured publishing.
+
+> **Open Source**: This project is open source and welcomes contributions from the community. See our [Contributing Guide](CONTRIBUTING.md) to get started!
 
 ## 🚀 Platform Features
 
@@ -39,7 +47,7 @@ A unified media platform built for engineers and technology teams to read and pu
 ## 📁 Project Structure
 
 ```
-onwardism-web/
+onwardism/
 ├── .gitignore
 ├── .vscode/
 ├── components.json                 # shadcn/ui configuration
@@ -187,8 +195,8 @@ Built with modern web technologies for performance and scalability:
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd onwardism-web
+   git clone https://github.com/onwardism/onwardism.git
+   cd onwardism
    ```
 
 2. **Install dependencies**
@@ -389,9 +397,40 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 NEXT_PUBLIC_APP_URL=https://yourdomain.com
 ```
 
+## 🤝 Contributing
+
+We welcome contributions from the community! Whether you're a developer, designer, writer, or just passionate about technology, there are many ways to contribute.
+
+### Quick Start for Contributors
+
+1. **Fork the repository** on GitHub
+2. **Clone your fork** locally
+3. **Install dependencies**: `npm install`
+4. **Start development**: `npm run dev`
+5. **Make your changes** and test thoroughly
+6. **Submit a pull request** with a clear description
+
+### Ways to Contribute
+
+- 🐛 **Bug Reports**: Found a bug? [Report it here](https://github.com/onwardism/onwardism/issues/new?template=bug_report.md)
+- ✨ **Feature Requests**: Have an idea? [Suggest it here](https://github.com/onwardism/onwardism/issues/new?template=feature_request.md)
+- 💻 **Code Contributions**: Check out [good first issues](https://github.com/onwardism/onwardism/labels/good%20first%20issue)
+- 📚 **Documentation**: Help improve our docs and guides
+- 🎨 **Design**: UI/UX improvements and accessibility enhancements
+
+### Development Guidelines
+
+- **Code Style**: We use ESLint and Prettier for consistent formatting
+- **TypeScript**: All code should be properly typed
+- **Testing**: Add tests for new features and bug fixes
+- **Accessibility**: Ensure all changes meet WCAG guidelines
+- **Mobile-First**: Design and develop with mobile users in mind
+
+For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🤝 Contributing
 
@@ -426,3 +465,33 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Technical support for publishing and platform issues
 - Community guidelines and content standards
 - Regular platform updates and feature improvements
+
+## 🌟 Community
+
+### Join Our Community
+
+- **GitHub Discussions**: [Join the conversation](https://github.com/onwardism/onwardism/discussions)
+- **Issues**: [Report bugs or request features](https://github.com/onwardism/onwardism/issues)
+- **Pull Requests**: [Contribute code](https://github.com/onwardism/onwardism/pulls)
+- **Social Media**: Follow us on [X](https://x.com/onwardism), [LinkedIn](https://linkedin.com/company/onwardism), [GitHub](https://github.com/onwardism)
+
+### Code of Conduct
+
+This project follows our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to uphold this code. Please report unacceptable behavior to conduct@onwardism.com.
+
+### Security
+
+Found a security vulnerability? Please see our [Security Policy](SECURITY.md) for responsible disclosure guidelines.
+
+## 🙏 Acknowledgments
+
+- **Contributors**: Thanks to all our [contributors](https://github.com/onwardism/onwardism/graphs/contributors)
+- **Open Source Community**: Built with amazing open source technologies
+- **Next.js Team**: For the incredible React framework
+- **Supabase Team**: For the backend-as-a-service platform
+- **Tailwind CSS**: For the utility-first CSS framework
+- **shadcn/ui**: For the beautiful component library
+
+---
+
+**Made with ❤️ by the Onwardism community**

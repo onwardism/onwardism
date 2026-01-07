@@ -1,13 +1,57 @@
 {
   "name": "onwardism",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "A unified media platform for engineers and technology teams to read and publish high-quality content focused on cloud, data, security, and AI.",
+  "keywords": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "supabase",
+    "media-platform",
+    "engineering",
+    "cloud",
+    "data",
+    "security",
+    "ai",
+    "open-source"
+  ],
+  "homepage": "https://github.com/onwardism/onwardism#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onwardism/onwardism.git"
+  },
+  "bugs": {
+    "url": "https://github.com/onwardism/onwardism/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Onwardism Team",
+    "email": "team@onwardism.com",
+    "url": "https://onwardism.com"
+  },
+  "contributors": [
+    {
+      "name": "Community Contributors",
+      "url": "https://github.com/onwardism/onwardism/graphs/contributors"
+    }
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "echo \"Tests coming soon\" && exit 0",
+    "prepare": "husky install || true"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
