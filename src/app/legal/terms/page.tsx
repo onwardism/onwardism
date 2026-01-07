@@ -35,7 +35,7 @@ export default function TermsPage() {
           <section className="mb-6">
             <h2 className="text-xl font-semibold mb-3">3. Disclaimer</h2>
             <p className="text-muted-foreground">
-              The materials on this service are provided on an 'as is' basis. We make no warranties, expressed or implied.
+              The materials on this service are provided on an &apos;as is&apos; basis. We make no warranties, expressed or implied.
             </p>
           </section>
         </CardContent>

@@ -65,7 +65,7 @@ export default function VerifyEmailPage() {
       <CardContent className="space-y-4">
         <div className="bg-muted p-4 rounded-md text-center">
           <p className="text-sm text-muted-foreground mb-2">
-            We've sent a verification code to:
+            We&apos;ve sent a verification code to:
           </p>
           <p className="text-sm font-medium">
             your-email@domain.com
@@ -109,7 +109,7 @@ export default function VerifyEmailPage() {
         </div>
         
         <div className="text-center text-xs sm:text-sm text-muted-foreground">
-          <p>Didn't receive the code? Check your spam folder or</p>
+          <p>Didn&apos;t receive the code? Check your spam folder or</p>
           <Link href="/auth/signup" className="text-primary hover:underline">
             try a different email address
           </Link>

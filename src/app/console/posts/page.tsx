@@ -63,7 +63,7 @@ export default function PostsPage() {
         <FileText className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
         <h2 className="text-2xl font-semibold mb-2">No posts yet</h2>
         <p className="text-muted-foreground mb-6">
-          You haven't created any posts yet. Start writing your first post!
+          You haven&apos;t created any posts yet. Start writing your first post!
         </p>
         <Link href="/console/write">
           <Button>

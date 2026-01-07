@@ -153,7 +153,7 @@ export default function OrgPostsPage({ params }: OrgPostsPageProps) {
         <Building2 className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
         <h2 className="text-2xl font-semibold mb-2">No organization posts yet</h2>
         <p className="text-muted-foreground mb-6">
-          This organization hasn't published any content yet. Start creating posts for your organization!
+          This organization hasn&apos;t published any content yet. Start creating posts for your organization!
         </p>
         <Link href="/console/write">
           <Button>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Send, Bot, User, Paperclip, X, FileText, Image as ImageIcon } from 'lucide-react'
@@ -227,14 +228,16 @@ export default function HomePage() {
                         {message.attachments.map((attachment) => (
                           <div key={attachment.id} className="flex items-center gap-2 p-2 rounded bg-black/10 dark:bg-white/10">
                             {attachment.type === 'image' ? (
-                              <>
-                                <ImageIcon className="h-4 w-4 flex-shrink-0" />
+                              <>                                <ImageIcon className="h-4 w-4 flex-shrink-0" />
                                 {attachment.preview && (
-                                  <img 
-                                    src={attachment.preview} 
-                                    alt={attachment.file.name}
-                                    className="w-16 h-16 object-cover rounded"
-                                  />
+                                  <div className="relative w-16 h-16">
+                                    <Image 
+                                      src={attachment.preview} 
+                                      alt={attachment.file.name}
+                                      fill
+                                      className="object-cover rounded"
+                                    />
+                                  </div>
                                 )}
                               </>
                             ) : (
@@ -299,11 +302,14 @@ export default function HomePage() {
                         <>
                           <ImageIcon className="h-4 w-4 text-primary flex-shrink-0" />
                           {file.preview && (
-                            <img 
-                              src={file.preview} 
-                              alt={file.file.name}
-                              className="w-8 h-8 object-cover rounded"
-                            />
+                            <div className="relative w-8 h-8">
+                              <Image 
+                                src={file.preview} 
+                                alt={file.file.name}
+                                fill
+                                className="object-cover rounded"
+                              />
+                            </div>
                           )}
                         </>
                       ) : (

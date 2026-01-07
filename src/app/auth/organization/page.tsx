@@ -92,7 +92,7 @@ export default function OrganizationPage() {
             </div>
             <div className="bg-muted p-3 rounded-md">
               <p className="text-sm text-muted-foreground">
-                Don't have an invite code? Ask your organization admin to send you one.
+                Don&apos;t have an invite code? Ask your organization admin to send you one.
               </p>
             </div>
             <Button className="w-full" variant="outline">
@@ -107,7 +107,7 @@ export default function OrganizationPage() {
         <CardHeader>
           <CardTitle>Recent Organizations</CardTitle>
           <CardDescription>
-            Organizations you've recently interacted with
+            Organizations you&apos;ve recently interacted with
           </CardDescription>
         </CardHeader>
         <CardContent>

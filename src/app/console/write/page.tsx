@@ -6,7 +6,7 @@ import {
   Save, 
   Eye, 
   Send,
-  Image,
+  Image as ImageIcon,
   Hash,
   Type
 } from 'lucide-react'
@@ -123,13 +123,13 @@ export default function WritePage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Image className="h-4 w-4" />
+                <ImageIcon className="h-4 w-4" />
                 Featured Image
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center">
-                <Image className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+                <ImageIcon className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                 <p className="text-sm text-muted-foreground mb-4">
                   No image selected
                 </p>

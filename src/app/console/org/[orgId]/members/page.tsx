@@ -138,7 +138,7 @@ export default function OrgMembersPage({ params }: OrgMembersPageProps) {
         <Users className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
         <h2 className="text-2xl font-semibold mb-2">No members yet</h2>
         <p className="text-muted-foreground mb-6">
-          This organization doesn't have any members yet. Start by inviting team members!
+          This organization doesn&apos;t have any members yet. Start by inviting team members!
         </p>
         <Button>
           <UserPlus className="mr-2 h-4 w-4" />
