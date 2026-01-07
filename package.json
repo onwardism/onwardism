@@ -1,7 +1,8 @@
 {
-  "name": "nextjs-project",
-  "version": "0.1.0",
+  "name": "onwardism",
+  "version": "1.0.0",
   "private": true,
+  "description": "A unified media platform for engineers and technology teams to read and publish high-quality content focused on cloud, data, security, and AI.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
